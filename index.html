@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INHERITANCE AND PROTOTYPE</title>
+</head>
+<body>
+<h3> Q1.Create 2 objects - parent and child. Attach methods to parent and use those methods in child object 
+        using parents prototype </h3>
+<pre>
+    const parent ={
+        firstname : "Hemant",
+        lastname : "Maheshwari",
+        fullname : function title(){
+            console.log(this.firstname+" "+this.lastname);
+        }
+    }
+    
+    const child ={
+        _proto_: parent
+    }
+    child.fullname();
+</pre>
+
+<hr>
+<h3> Q2.Write code to explain prototype chaining </h3>
+
+<pre>
+    let obj={
+        name : "Hemant"
+    }
+    
+    let obj1 ={
+        _proto_: obj,
+        lastname : "Maheshwari"
+    }
+    
+    let obj2 = {
+        _proto_: obj1,
+        age :   "20",
+    }
+    
+    console.log(obj.name)
+</pre>
+<hr>
+<h3>Q3.Add a method to calculate sum of all elements in Array in array's protype, use that method to calculate sum for multiple arrays</h3>
+<pre>
+    Array.prototype.sum = function() {
+        let result = 0;
+        for (let i = 0; i &lt; this.length; i++) {
+          result += this[i];
+        }
+        return result;
+      };
+    
+    let N1 = [6, 8, 9];
+    let N2 = [7, 8, 6];
+    
+    
+    let addition = N1.sum() + N2.sum()
+    console.log(addition);
+</pre>
+
+<hr>
+
+<h3>Q4.Write a JavaScript function to retrieve all the names of object's own and inherited properties</h3>
+<pre>
+    class student {
+        constructor(name, rollno, division){
+            this.name= name;
+            this.rollno= rollno;
+            this.division = division; 
+        }
+    
+        set setFriend(friend){
+            this.friend= friend
+        }
+    }
+    
+    let obj = new student("hemant", "50","A")
+    obj.friend="Ayan"
+    console.log(obj)
+    
+    class senior extends student{
+         constructor(){
+            super("Rehan", "49", "B")
+         }
+    }
+     let seniorobj = new senior();
+     console.log(seniorobj)
+</pre>
+
+<hr>
+
+
+    <script src="./index.js"></script>
+</body>
+</html>
